@@ -34,8 +34,8 @@ let package = Package(
         .library(name: "BCP 47", targets: ["BCP 47"])
     ],
     dependencies: [
-        .package(path: "../../swift-primitives/swift-standard-library-extensions"),
-        .package(path: "../swift-rfc-5646")
+        .package(url: "https://github.com/swift-primitives/swift-standard-library-extensions.git", branch: "main"),
+        .package(url: "https://github.com/swift-ietf/swift-rfc-5646.git", branch: "main")
     ],
     targets: [
         .target(
