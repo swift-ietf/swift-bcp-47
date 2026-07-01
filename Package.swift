@@ -8,8 +8,6 @@ extension String {
     static let bcp47Tests: Self = bcp47 + " Tests"
 
     static let rfc5646: Self = "RFC 5646"
-    static let standards: Self = "Standards"
-    static let standardsTestSupport: Self = standards + "TestSupport"
 
     var tests: Self { self + " Tests" }
 }
@@ -17,7 +15,6 @@ extension String {
 extension PackageDescription.Target.Dependency {
     static let rfc5646: Self = .product(name: "RFC 5646", package: "swift-rfc-5646")
     static let standards: Self = .product(name: "Standard Library Extensions", package: "swift-standard-library-extensions")
-    static let standardsTestSupport: Self = .product(name: "Test Primitives", package: "swift-test-primitives")
 
     static let bcp47: Self = .target(name: .bcp47)
 }
