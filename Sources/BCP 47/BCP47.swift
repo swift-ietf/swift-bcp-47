@@ -28,7 +28,9 @@ import Standard_Library_Extensions
 /// let simplifiedChinese = try BCP47.LanguageTag("zh-Hans")
 /// let serbianLatin = try BCP47.LanguageTag("sr-Latn-RS")
 /// ```
-public enum BCP47 {
+public enum BCP47 {}
+
+extension BCP47 {
     /// Language tag per RFC 5646 (re-exported)
     public typealias LanguageTag = RFC_5646.LanguageTag
 
