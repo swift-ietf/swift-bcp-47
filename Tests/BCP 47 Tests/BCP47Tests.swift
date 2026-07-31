@@ -8,7 +8,12 @@ import Testing
 
 @Suite("BCP 47 Language Tags")
 struct BCP47Tests {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
+}
 
+extension BCP47Tests.Unit {
     // MARK: - Basic Usage via BCP47 namespace
 
     @Test
@@ -45,19 +50,6 @@ struct BCP47Tests {
         #expect(zhHansCN.language.description == "zh")
     }
 
-    // MARK: - Error Handling via BCP47 namespace
-
-    @Test
-    func `BCP47: Errors work via BCP47 namespace`() {
-        #expect(throws: BCP47.Error.emptyTag) {
-            try BCP47.LanguageTag("")
-        }
-
-        #expect(throws: BCP47.Error.invalidLanguageSubtag("e")) {
-            try BCP47.LanguageTag("e")
-        }
-    }
-
     // MARK: - Verify RFC_5646 is also accessible
 
     @Test
@@ -78,7 +70,24 @@ struct BCP47Tests {
         #expect(decoded == original)
         #expect(decoded.value == "zh-Hans-CN")
     }
+}
 
+extension BCP47Tests.`Edge Case` {
+    // MARK: - Error Handling via BCP47 namespace
+
+    @Test
+    func `BCP47: Errors work via BCP47 namespace`() {
+        #expect(throws: BCP47.Error.emptyTag) {
+            try BCP47.LanguageTag("")
+        }
+
+        #expect(throws: BCP47.Error.invalidLanguageSubtag("e")) {
+            try BCP47.LanguageTag("e")
+        }
+    }
+}
+
+extension BCP47Tests.Integration {
     // MARK: - Real World Examples
 
     @Test
