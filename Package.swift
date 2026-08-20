@@ -1,7 +1,5 @@
-// swift-tools-version: 6.3.3
+// swift-tools-version: 6.4
 import PackageDescription
-
-
 
 extension String {
     static let bcp47: Self = "BCP 47"
@@ -14,7 +12,10 @@ extension String {
 
 extension PackageDescription.Target.Dependency {
     static let rfc5646: Self = .product(name: "RFC 5646", package: "swift-rfc-5646")
-    static let standards: Self = .product(name: "Standard Library Extensions", package: "swift-standard-library-extensions")
+    static let standards: Self = .product(
+        name: "Standard Library Extensions",
+        package: "swift-standard-library-extensions"
+    )
 
     static let bcp47: Self = .target(name: .bcp47)
 }
@@ -22,30 +23,33 @@ extension PackageDescription.Target.Dependency {
 let package = Package(
     name: "swift-bcp-47",
     platforms: [
-        .macOS("27"),
-        .iOS("27"),
-        .tvOS("27"),
-        .watchOS("27")
+        .macOS(.v27),
+        .iOS(.v27),
+        .tvOS(.v27),
+        .watchOS(.v27),
     ],
     products: [
         .library(name: "BCP 47", targets: ["BCP 47"])
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-primitives/swift-standard-library-extensions.git", branch: "main"),
-        .package(url: "https://github.com/swift-ietf/swift-rfc-5646.git", branch: "main")
+        .package(
+            url: "https://github.com/swift-primitives/swift-standard-library-extensions.git",
+            branch: "main"
+        ),
+        .package(url: "https://github.com/swift-ietf/swift-rfc-5646.git", branch: "main"),
     ],
     targets: [
         .target(
             name: "BCP 47",
             dependencies: [
                 .standards,
-                .rfc5646
+                .rfc5646,
             ]
         ),
         .testTarget(
             name: "BCP 47 Tests",
             dependencies: [
-                "BCP 47",
+                "BCP 47"
             ]
         ),
     ],
