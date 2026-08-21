@@ -1,6 +1,3 @@
-// BCP47Tests.swift
-// BCP 47 Tests
-
 import Foundation
 import Testing
 
@@ -14,7 +11,6 @@ struct BCP47Tests {
 }
 
 extension BCP47Tests.Unit {
-    // MARK: - Basic Usage via BCP47 namespace
 
     @Test
     func `BCP47: Simple language codes work via BCP47 namespace`() throws {
@@ -50,11 +46,9 @@ extension BCP47Tests.Unit {
         #expect(zhHansCN.language.description == "zh")
     }
 
-    // MARK: - Verify RFC_5646 is also accessible
-
     @Test
     func `BCP47: RFC_5646 types are accessible`() throws {
-        // BCP 47 re-exports RFC_5646, so both should work
+
         let tag1 = try BCP47.LanguageTag("en-US")
         let tag2 = try RFC_5646.LanguageTag("en-US")
         #expect(tag1 == tag2)
@@ -73,7 +67,6 @@ extension BCP47Tests.Unit {
 }
 
 extension BCP47Tests.`Edge Case` {
-    // MARK: - Error Handling via BCP47 namespace
 
     @Test
     func `BCP47: Errors work via BCP47 namespace`() {
@@ -88,18 +81,16 @@ extension BCP47Tests.`Edge Case` {
 }
 
 extension BCP47Tests.Integration {
-    // MARK: - Real World Examples
 
     @Test
     func `BCP47: Real world language tags`() throws {
-        // English variants
+
         _ = try BCP47.LanguageTag("en")
         _ = try BCP47.LanguageTag("en-US")
         _ = try BCP47.LanguageTag("en-GB")
         _ = try BCP47.LanguageTag("en-AU")
         _ = try BCP47.LanguageTag("en-CA")
 
-        // Chinese variants
         _ = try BCP47.LanguageTag("zh")
         _ = try BCP47.LanguageTag("zh-Hans")
         _ = try BCP47.LanguageTag("zh-Hant")
@@ -107,14 +98,12 @@ extension BCP47Tests.Integration {
         _ = try BCP47.LanguageTag("zh-Hant-TW")
         _ = try BCP47.LanguageTag("zh-Hant-HK")
 
-        // Serbian variants
         _ = try BCP47.LanguageTag("sr")
         _ = try BCP47.LanguageTag("sr-Cyrl")
         _ = try BCP47.LanguageTag("sr-Latn")
         _ = try BCP47.LanguageTag("sr-Cyrl-RS")
         _ = try BCP47.LanguageTag("sr-Latn-RS")
 
-        // Others
         _ = try BCP47.LanguageTag("ja-JP")
         _ = try BCP47.LanguageTag("ko-KR")
         _ = try BCP47.LanguageTag("ar-SA")
