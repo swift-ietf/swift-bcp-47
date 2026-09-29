@@ -23,8 +23,8 @@ let package = Package(
         .target(
             name: "BCP 47",
             dependencies: [
+                .product(name: "RFC 5646", package: "swift-rfc-5646"),
                 .product(name: "Standard Library Extensions", package: "swift-standard-library-extensions"),
-                .target(name: "RFC 5646"),
             ]
         ),
         .testTarget(
