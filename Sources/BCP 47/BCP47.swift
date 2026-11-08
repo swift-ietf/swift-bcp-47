@@ -1,4 +1,4 @@
-@_exported import RFC_5646
+public import RFC_5646
 import Standard_Library_Extensions
 
 public enum BCP47 {}
