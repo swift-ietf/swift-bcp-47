@@ -3,7 +3,7 @@ import Testing
 
 @testable import BCP_47
 
-@Suite("BCP 47 Language Tags")
+@Suite
 struct BCP47Tests {
     @Suite struct Unit {}
     @Suite struct `Edge Case` {}
