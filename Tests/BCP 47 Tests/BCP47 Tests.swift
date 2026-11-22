@@ -47,10 +47,10 @@ extension BCP47Tests.Unit {
     }
 
     @Test
-    func `BCP47: RFC_5646 types are accessible`() throws {
+    func `BCP47: IETF.RFC.5646 types are accessible`() throws {
 
         let tag1 = try BCP47.LanguageTag("en-US")
-        let tag2 = try RFC_5646.LanguageTag("en-US")
+        let tag2 = try IETF.RFC.`5646`.LanguageTag("en-US")
         #expect(tag1 == tag2)
     }
 
