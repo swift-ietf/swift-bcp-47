@@ -14,34 +14,34 @@ extension BCP47Tests.Unit {
 
     @Test
     func `BCP47: Simple language codes work via BCP47 namespace`() throws {
-        let english = try BCP47.LanguageTag("en")
+        let english = try BCP47.Tag("en")
         #expect(english.value == "en")
         #expect(english.language.description == "en")
 
-        let french = try BCP47.LanguageTag("fr")
+        let french = try BCP47.Tag("fr")
         #expect(french.language.description == "fr")
 
-        let german = try BCP47.LanguageTag("de")
+        let german = try BCP47.Tag("de")
         #expect(german.language.description == "de")
     }
 
     @Test
     func `BCP47: Language with region via BCP47 namespace`() throws {
-        let enUS = try BCP47.LanguageTag("en-US")
+        let enUS = try BCP47.Tag("en-US")
         #expect(enUS.value == "en-US")
         #expect(enUS.language.description == "en")
     }
 
     @Test
     func `BCP47: Language with script via BCP47 namespace`() throws {
-        let zhHans = try BCP47.LanguageTag("zh-Hans")
+        let zhHans = try BCP47.Tag("zh-Hans")
         #expect(zhHans.value == "zh-Hans")
         #expect(zhHans.language.description == "zh")
     }
 
     @Test
     func `BCP47: Complex tags via BCP47 namespace`() throws {
-        let zhHansCN = try BCP47.LanguageTag("zh-Hans-CN")
+        let zhHansCN = try BCP47.Tag("zh-Hans-CN")
         #expect(zhHansCN.value == "zh-Hans-CN")
         #expect(zhHansCN.language.description == "zh")
     }
@@ -49,18 +49,18 @@ extension BCP47Tests.Unit {
     @Test
     func `BCP47: IETF.RFC.5646 types are accessible`() throws {
 
-        let tag1 = try BCP47.LanguageTag("en-US")
-        let tag2 = try IETF.RFC.`5646`.LanguageTag("en-US")
+        let tag1 = try BCP47.Tag("en-US")
+        let tag2 = try IETF.RFC.`5646`.Tag("en-US")
         #expect(tag1 == tag2)
     }
 
     @Test
     func `BCP47: Codable round-trip via BCP47 namespace`() throws {
-        let original = try BCP47.LanguageTag("zh-Hans-CN")
+        let original = try BCP47.Tag("zh-Hans-CN")
         let encoder = JSONEncoder()
         let data = try encoder.encode(original)
         let decoder = JSONDecoder()
-        let decoded = try decoder.decode(BCP47.LanguageTag.self, from: data)
+        let decoded = try decoder.decode(BCP47.Tag.self, from: data)
         #expect(decoded == original)
         #expect(decoded.value == "zh-Hans-CN")
     }
@@ -71,11 +71,11 @@ extension BCP47Tests.`Edge Case` {
     @Test
     func `BCP47: Errors work via BCP47 namespace`() {
         #expect(throws: BCP47.Error.emptyTag) {
-            try BCP47.LanguageTag("")
+            try BCP47.Tag("")
         }
 
         #expect(throws: BCP47.Error.invalidLanguageSubtag("e")) {
-            try BCP47.LanguageTag("e")
+            try BCP47.Tag("e")
         }
     }
 }
@@ -85,28 +85,28 @@ extension BCP47Tests.Integration {
     @Test
     func `BCP47: Real world language tags`() throws {
 
-        _ = try BCP47.LanguageTag("en")
-        _ = try BCP47.LanguageTag("en-US")
-        _ = try BCP47.LanguageTag("en-GB")
-        _ = try BCP47.LanguageTag("en-AU")
-        _ = try BCP47.LanguageTag("en-CA")
+        _ = try BCP47.Tag("en")
+        _ = try BCP47.Tag("en-US")
+        _ = try BCP47.Tag("en-GB")
+        _ = try BCP47.Tag("en-AU")
+        _ = try BCP47.Tag("en-CA")
 
-        _ = try BCP47.LanguageTag("zh")
-        _ = try BCP47.LanguageTag("zh-Hans")
-        _ = try BCP47.LanguageTag("zh-Hant")
-        _ = try BCP47.LanguageTag("zh-Hans-CN")
-        _ = try BCP47.LanguageTag("zh-Hant-TW")
-        _ = try BCP47.LanguageTag("zh-Hant-HK")
+        _ = try BCP47.Tag("zh")
+        _ = try BCP47.Tag("zh-Hans")
+        _ = try BCP47.Tag("zh-Hant")
+        _ = try BCP47.Tag("zh-Hans-CN")
+        _ = try BCP47.Tag("zh-Hant-TW")
+        _ = try BCP47.Tag("zh-Hant-HK")
 
-        _ = try BCP47.LanguageTag("sr")
-        _ = try BCP47.LanguageTag("sr-Cyrl")
-        _ = try BCP47.LanguageTag("sr-Latn")
-        _ = try BCP47.LanguageTag("sr-Cyrl-RS")
-        _ = try BCP47.LanguageTag("sr-Latn-RS")
+        _ = try BCP47.Tag("sr")
+        _ = try BCP47.Tag("sr-Cyrl")
+        _ = try BCP47.Tag("sr-Latn")
+        _ = try BCP47.Tag("sr-Cyrl-RS")
+        _ = try BCP47.Tag("sr-Latn-RS")
 
-        _ = try BCP47.LanguageTag("ja-JP")
-        _ = try BCP47.LanguageTag("ko-KR")
-        _ = try BCP47.LanguageTag("ar-SA")
-        _ = try BCP47.LanguageTag("he-IL")
+        _ = try BCP47.Tag("ja-JP")
+        _ = try BCP47.Tag("ko-KR")
+        _ = try BCP47.Tag("ar-SA")
+        _ = try BCP47.Tag("he-IL")
     }
 }

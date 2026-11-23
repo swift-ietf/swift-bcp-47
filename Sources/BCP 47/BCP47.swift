@@ -5,7 +5,7 @@ public enum BCP47 {}
 
 extension BCP47 {
 
-    public typealias LanguageTag = IETF.RFC.`5646`.LanguageTag
+    public typealias Tag = IETF.RFC.`5646`.Tag
 
     public typealias Error = IETF.RFC.`5646`.Error
 }
